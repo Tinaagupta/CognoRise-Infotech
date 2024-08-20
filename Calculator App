@@ -1,110 +1,103 @@
-from tkinter import * 
-root=Tk() 
-root.configure(bg="#696969") 
-root.geometry("500x600") 
+from tkinter import *
 
-# Defining a function to addition two numbers 
-def ad(): 
+# Creating the main window
+root = Tk()
+root.title("Simple Calculator")
+root.configure(bg="#2c3e50")
+root.geometry("500x600")
 
-    # Setting the operation label to " + " 
-    z.set("           +") 
-    num1=x.get() 
-    num2=y.get() 
-    # Calculating the sum 
-    ans=num1+num2 
-    # Displaying the result in the result label 
-    l1.configure(text=ans) 
+# Defining functions for the calculator operations
 
+def ad():
+    z.set("+")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 + num2
+    l1.configure(text=ans)
 
-# Defining a function to subraction two numbers 
-def sb(): 
+def sb():
+    z.set("-")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 - num2
+    l1.configure(text=ans)
 
-    # Setting the operation label to " - " 
-    z.set("           –") 
-    num1=x.get() 
-    num2=y.get() 
-    # Calculating the difference 
-    ans=num1-num2 
-    # Displaying the result in the result label 
-    l1.configure(text=ans) 
+def ml():
+    z.set("x")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 * num2
+    l1.configure(text=ans)
 
+def dv():
+    z.set("÷")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 / num2
+    l1.configure(text=ans)
 
-# Defining a function to multiply two numbers 
-def ml(): 
+def md():
+    z.set("%")
+    num1 = x.get()
+    num2 = y.get()
+    ans = num1 % num2
+    l1.configure(text=ans)
 
-    # Setting the operation label to " x " 
-    z.set("           x") 
-    num1=x.get() 
-    num2=y.get() 
+def acl():
+    x.set(0)
+    y.set(0)
+    z.set("")
+    l1.configure(text="")
 
-    # Calculating the product 
-    ans=num1*num2 
-    # Displaying the result in the result label 
-    l1.configure(text=ans) 
+# Creating labels, entries, and buttons with enhanced appearance
 
+Label(root, text="Enter First Number:", bg="#ecf0f1", font="Helvetica 12 bold").place(x=50, y=50, width=200, height=40)
+Label(root, text="Enter Second Number:", bg="#ecf0f1", font="Helvetica 12 bold").place(x=50, y=100, width=200, height=40)
+Label(root, text="Operation:", bg="#ecf0f1", font="Helvetica 12 bold").place(x=50, y=150, width=200, height=40)
 
-# Defining a function to divide two numbers 
-def dv(): 
+x = IntVar()
+y = IntVar()
+z = StringVar()
 
-    # Setting the operation label to " ÷ " 
-    z.set("           ÷") 
-    num1=x.get() 
-    num2=y.get() 
-    # Calculating the quotient 
-    ans=num1/num2 
-    # Displaying the result in the result label 
-    l1.configure(text=ans) 
+e1 = Entry(root, textvariable=x, font="Helvetica 15", bd=5, relief=GROOVE)
+e1.place(x=280, y=50, width=150, height=40)
 
+e2 = Entry(root, textvariable=y, font="Helvetica 15", bd=5, relief=GROOVE)
+e2.place(x=280, y=100, width=150, height=40)
 
-# Defining a function to modulus two numbers 
-def md(): 
+e3 = Entry(root, textvariable=z, font="Helvetica 15", bd=5, relief=GROOVE, state="readonly", justify="center")
+e3.place(x=280, y=150, width=150, height=40)
 
-    # Setting the operation label to " % " 
-    z.set("           %") 
-    num1=x.get() 
-    num2=y.get() 
-    # Calculating the modulus 
-    ans=num1//num2 
-    # Displaying the result in the result label 
-    l1.configure(text=ans) 
+l1 = Label(root, text="0", bg="#ecf0f1", font="Helvetica 20 bold", relief=SUNKEN)
+l1.place(x=150, y=220, width=200, height=50)
 
+button_style = {
+    "font": "Helvetica 20 bold",
+    "bg": "#3498db",
+    "fg": "white",
+    "bd": 5,
+    "relief": RAISED,
+    "activebackground": "#2980b9",
+    "activeforeground": "white"
+}
 
-# Defining a function to all clear 
-def acl(): 
+a1 = Button(root, text="+", command=ad, **button_style)
+a1.place(x=80, y=300, width=80, height=80)
 
-    # Setting the values of the first and second numbers and the operation label to " 0 " 
-    x.set("0") 
-    x.set("0") 
-    y.set("0") 
-    z.set("0") 
-    # Clearing the result label 
-    l1.configure(text=" ") 
+s1 = Button(root, text="-", command=sb, **button_style)
+s1.place(x=180, y=300, width=80, height=80)
 
-# Creating labels for the first number, second number, and operation 
-Label(root,text="Enter First Number:",bg="white",font="lucida 10 bold").place(x=100,y=100,width=150,height=30) 
-Label(root,text="Enter Second Number:",bg="white",font="lucida 10 bold").place(x=100,y=150,width=150,height=30) 
-Label(root,text="Enter operation:",bg="white",font="lucida 10 bold").place(x=100,y=200,width=150,height=30) 
+m1 = Button(root, text="x", command=ml, **button_style)
+m1.place(x=280, y=300, width=80, height=80)
 
-# Creating variables to store the values of the first and second numbers and the operation 
-x=IntVar() 
-y=IntVar() 
-z=StringVar() 
-e1=Entry(root,textvariable=x,font="lucida 15 bold").place(x=280,y=100,width=150,height=30) 
-e2=Entry(root,textvariable=y,font="lucida 15 bold").place(x=280,y=150,width=150,height=30) 
-e3=Entry(root,textvariable=z,font="lucida 15 bold").place(x=280,y=200,width=150,height=30) 
+d1 = Button(root, text="÷", command=dv, **button_style)
+d1.place(x=380, y=300, width=80, height=80)
 
-# Creating a label to display the result 
-l1=Label(root,text=" ",bg="white",font="lucida 15 bold") 
-l1.place(x=150,y=250,width=200,height=30) 
+m2 = Button(root, text="%", command=md, **button_style)
+m2.place(x=130, y=400, width=80, height=80)
 
-
-# Creating buttons for addition, subtraction, multiplication, division, modulus, and clear all 
-a1=Button(root,text="+",font="lucida 30 bold",command=ad).place(x=100,y=300,width=80,height=80) 
-s1=Button(root,text="–",font="lucida 30 bold",command=sb).place(x=200,y=300,width=80,height=80) 
-m1=Button(root,text="x",font="lucida 30 bold",command=ml).place(x=100,y=400,width=80,height=80) 
-d1=Button(root,text="÷",font="lucida 30 bold",command=dv).place(x=200,y=400,width=80,height=80) 
-m2=Button(root,text="%",font="lucida 30 bold",command=md).place(x=300,y=300,width=80,height=80) 
-ac=Button(root,text="AC",font="lucida 30 bold",command=acl).place(x=300,y=400,width=80,height=80) 
-
+ac = Button(root, text="AC", command=acl, font="Helvetica 20 bold", bg="#e74c3c", fg="white", bd=5, relief=RAISED,
+            activebackground="#c0392b", activeforeground="white")
+ac.place(x=230, y=400, width=150, height=80)
 
 root.mainloop()
